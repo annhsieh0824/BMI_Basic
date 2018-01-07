@@ -1,11 +1,16 @@
 package com.demo.android.bmi_basic;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -32,6 +37,7 @@ public class Bmi extends AppCompatActivity{
         //Method3: 匿名listener
         findViews();
         setListeners();
+
 
     }
 
@@ -69,6 +75,8 @@ public class Bmi extends AppCompatActivity{
             try {
                 double BMI=calcBMI();
                 showBMI(BMI);
+//                openOptionDialog();
+                Toast.makeText(Bmi.this, "Pressed confirm!", Toast.LENGTH_LONG);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -79,8 +87,6 @@ public class Bmi extends AppCompatActivity{
     };
 
     Double calcBMI(){
-
-
         double h = Double.parseDouble(height.getText()+"")/100;
         double w= Double.parseDouble(weight.getText()+"");
         double BMI= w/(h*h) ;
@@ -99,6 +105,29 @@ public class Bmi extends AppCompatActivity{
         else
             suggest.setText(R.string.bmi_average);
 
+    }
+
+    DialogInterface.OnClickListener dialogListener= new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            System.out.println("Pressed Confirm in Dialog");
+
+//            Uri uri= Uri.parse("http://google.com");
+//            Intent intent= new Intent(Intent.ACTION_VIEW, uri);
+//            startActivities(intent);
+        }
+    };
+
+    void openOptionDialog(){
+        //method1
+//        new AlertDialog.Builder(Bmi.this).setTitle("About BMI").setMessage("Android BMI calc")
+//                .setPositiveButton("Confirm",dialogListener)
+//                .setNegativeButton("Cancel",null)
+//                .show();
+        //method2
+        AlertDialog.Builder ab= new AlertDialog.Builder(Bmi.this);
+        ab.setTitle("About BMI");
+        ab.setMessage("Android BMI calc").setPositiveButton("Confirm",dialogListener).setNegativeButton("Cancel",null).show();
     }
 
 
