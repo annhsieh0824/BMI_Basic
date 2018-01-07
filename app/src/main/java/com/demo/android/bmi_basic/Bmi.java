@@ -17,6 +17,7 @@ public class Bmi extends AppCompatActivity{
     Button button;
     EditText height,weight;
     TextView result,suggest;
+    String test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
