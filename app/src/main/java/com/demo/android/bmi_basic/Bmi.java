@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,11 +24,12 @@ public class Bmi extends AppCompatActivity{
     EditText height,weight;
     TextView result,suggest;
     String test;
-
+    private static final String TAG="LifeCycle";
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.d(TAG,"Bmi- onCreate");
         //show linearlayout
         setContentView(R.layout.linearlayout);
 
@@ -39,6 +41,41 @@ public class Bmi extends AppCompatActivity{
         setListeners();
 
 
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG,"Bmi- onStart");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG,"Bmi- onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG,"Bmi- onDestroy");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG,"Bmi- onPause");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG,"Bmi- onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG,"Bmi- onRestart");
     }
 
     //Method1: OnClick from xml
