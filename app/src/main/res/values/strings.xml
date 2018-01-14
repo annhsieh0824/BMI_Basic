@@ -4,7 +4,9 @@
     <string name="bmi_weight">Weight(kg)</string>
     <string name="bmi_submit">Calculate BMI</string>
     <string name="bmi_result">Your BMI is </string>
-    <string name="bmi_average">Standard shape </string>
+    <string name="bmi_average">Standard shape! </string>
     <string name="bmi_heavy">Too fat!! </string>
     <string name="bmi_light">Too thin!! </string>
+    <string name="report_title">BMI_Basic</string>
+    <string name="report_back">Back to BMI</string>
 </resources>

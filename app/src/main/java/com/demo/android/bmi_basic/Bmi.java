@@ -73,10 +73,22 @@ public class Bmi extends AppCompatActivity{
         public void onClick(View v) {
             System.out.println("pressed button by 匿名listener!");
             try {
-                double BMI=calcBMI();
-                showBMI(BMI);
+//                double BMI=calcBMI();
+//                showBMI(BMI);
 //                openOptionDialog();
-                Toast.makeText(Bmi.this, "Pressed confirm!", Toast.LENGTH_LONG);
+
+                //switch to report
+//                Intent intent= new Intent();
+//                intent.setClass(Bmi.this,Report.class);
+                // intent 2 in 1
+                Intent intent = new Intent(Bmi.this, Report.class);
+
+                Bundle bundle= new Bundle();
+                bundle.putString("KEY_HEIGHT", height.getText().toString());
+                bundle.putString("KEY_WEIGHT", weight.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -107,16 +119,6 @@ public class Bmi extends AppCompatActivity{
 
     }
 
-    DialogInterface.OnClickListener dialogListener= new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            System.out.println("Pressed Confirm in Dialog");
-
-//            Uri uri= Uri.parse("http://google.com");
-//            Intent intent= new Intent(Intent.ACTION_VIEW, uri);
-//            startActivities(intent);
-        }
-    };
 
     void openOptionDialog(){
         //method1
@@ -127,8 +129,30 @@ public class Bmi extends AppCompatActivity{
         //method2
         AlertDialog.Builder ab= new AlertDialog.Builder(Bmi.this);
         ab.setTitle("About BMI");
-        ab.setMessage("Android BMI calc").setPositiveButton("Confirm",dialogListener).setNegativeButton("Cancel",null).show();
+        ab.setMessage("Android BMI calc")
+                .setPositiveButton("Confirm",dialogListener)
+                .setNegativeButton("Cancel",dialogListenerToaster)
+                .show();
     }
+
+    DialogInterface.OnClickListener dialogListener= new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+//            System.out.println("Pressed Confirm in Dialog");
+            Uri uri= Uri.parse("http://google.com");
+            Intent intent= new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        }
+    };
+
+    DialogInterface.OnClickListener dialogListenerToaster= new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            Toast.makeText(Bmi.this,"Pressed Cancel",Toast.LENGTH_LONG).show();
+        }
+    };
+
+
 
 
 
