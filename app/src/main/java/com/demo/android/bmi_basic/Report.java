@@ -74,7 +74,9 @@ public class Report extends AppCompatActivity {
         TextView result= findViewById(R.id.result);
         TextView suggest=findViewById(R.id.suggest);
 //        DecimalFormat df= new DecimalFormat("0.00");
-        result.setText("Your BMI is " +df.format(BMI));
+//        result.setText(String.valueOf(R.string.bmi_result) +df.format(BMI));
+
+        result.setText(getResources().getString(R.string.bmi_result)+df.format(BMI));
 
         if (BMI>25) {
             suggest.setText(R.string.bmi_heavy);

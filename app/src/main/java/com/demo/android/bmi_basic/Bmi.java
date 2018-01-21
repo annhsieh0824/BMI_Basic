@@ -145,7 +145,8 @@ public class Bmi extends AppCompatActivity{
 
     void showBMI(double BMI){
         DecimalFormat df= new DecimalFormat("0.00");
-        result.setText("Your BMI is " +df.format(BMI));
+//        result.setText("Your BMI is " +df.format(BMI));
+        result.setText(getResources().getString(R.string.bmi_result)+df.format(BMI));
 
         if (BMI>25)
             suggest.setText(R.string.bmi_heavy);
