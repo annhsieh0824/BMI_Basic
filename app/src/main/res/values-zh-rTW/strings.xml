@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BMI_量測</string>
+    <string name="bmi_height">身高(cm)</string>
+    <string name="bmi_weight">體重(kg)</string>
+    <string name="bmi_submit">計算 BMI</string>
+    <string name="bmi_result">你的 BMI是  </string>
+    <string name="bmi_average">標準身材! </string>
+    <string name="bmi_heavy">過胖!! </string>
+    <string name="bmi_light">太瘦!! </string>
+    <string name="report_title">BMI_報告</string>
+    <string name="report_back">回到 BMI</string>
+</resources>
